@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: repochat-postgres
+    environment:
+      POSTGRES_USER: repochat
+      POSTGRES_PASSWORD: repochat
+      POSTGRES_DB: repochat
+    ports:
+      - "5433:5432"   # 5433 on the host so it won't clash with a local Postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
